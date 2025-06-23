@@ -1,4 +1,6 @@
+import 'package:elevate_task/products_screen/feature/widgets/product_item_widget.dart';
 import 'package:flutter/material.dart';
+
 
 class ProductScreen extends StatelessWidget {
   static const String routeName = "Product_screen";
@@ -7,6 +9,12 @@ class ProductScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(color: Colors.red);
+    return Scaffold(
+      body: SafeArea(
+        child: ProductItemWidget(),
+      ),
+    );
   }
 }
+
+
