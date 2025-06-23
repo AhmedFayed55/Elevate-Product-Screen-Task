@@ -8,7 +8,7 @@ class CustomTxt extends StatelessWidget {
   final String text;
   final double? fontSize;
   final TextStyle? textStyle;
-
+  final int? maxLines;
   final FontWeight? fontWeight;
 
   const CustomTxt({
@@ -18,13 +18,14 @@ class CustomTxt extends StatelessWidget {
     this.fontColor,
     this.textStyle,
     super.key,
+    this.maxLines,
   });
 
   @override
   Widget build(BuildContext context) {
     return AutoSizeText(
       text,
-      maxLines: 1,
+      maxLines: maxLines ?? 1,
       overflow: TextOverflow.ellipsis,
       style:
           textStyle ??
