@@ -10,8 +10,6 @@ class ProductItemWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: REdgeInsets.symmetric(horizontal: 15.w),
-      height: 242.h,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16.r),
         border: Border.all(color: Constants.primary30Opacity, width: 2),
@@ -22,14 +20,14 @@ class ProductItemWidget extends StatelessWidget {
             children: [
               ClipRRect(
                 borderRadius: BorderRadius.circular(15.r),
-                child: Image.asset("assets/dummy_image.png", fit: BoxFit.cover),
+                child: Image.asset("assets/dummy_image.png", fit: BoxFit.fill),
               ),
               Positioned(
                 top: 8.h,
                 right: 8.w,
                 child: CircleAvatar(
                   backgroundColor: Constants.whiteColor,
-                  radius: 20.r,
+                  radius: 17.r,
                   child: Center(
                     child: IconButton(
                       onPressed: () {
@@ -52,10 +50,11 @@ class ProductItemWidget extends StatelessWidget {
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 8.h),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 CustomTxt(
+                  maxLines: 2,
                   text:
                       "Nike Air Jordon Nike shoes flexible for woman and men ",
                   fontSize: 12.sp,
