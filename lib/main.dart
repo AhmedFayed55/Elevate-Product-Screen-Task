@@ -17,6 +17,7 @@ class ProductsApp extends StatelessWidget {
       splitScreenMode: true,
       builder:
           (context, child) => MaterialApp(
+            themeMode: ThemeMode.light,
             debugShowCheckedModeBanner: false,
             initialRoute: ProductScreen.routeName,
             routes: {ProductScreen.routeName: (_) => ProductScreen()},

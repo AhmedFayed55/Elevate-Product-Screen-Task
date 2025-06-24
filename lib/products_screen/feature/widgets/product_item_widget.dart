@@ -1,3 +1,5 @@
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:elevate_task/products_screen/domain/entity/product_response_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -5,7 +7,9 @@ import '../../../core/constants.dart';
 import 'custom_txt.dart';
 
 class ProductItemWidget extends StatelessWidget {
-  const ProductItemWidget({super.key});
+  const ProductItemWidget({super.key, required this.product});
+
+  final ProductResponseEntity product;
 
   @override
   Widget build(BuildContext context) {
@@ -20,8 +24,22 @@ class ProductItemWidget extends StatelessWidget {
             children: [
               ClipRRect(
                 borderRadius: BorderRadius.circular(15.r),
-                child: Image.asset("assets/dummy_image.png", fit: BoxFit.fill),
-              ),
+                child: CachedNetworkImage(
+                  width: 191.w,
+                  height: 120.h,
+                  fit: BoxFit.cover,
+                  imageUrl: product.image ?? '',
+                  placeholder:
+                      (context, url) => const Center(
+                        child: CircularProgressIndicator(
+                          color: Constants.primaryDark,
+                        ),
+                      ),
+                  errorWidget:
+                      (context, url, error) =>
+                          const Icon(Icons.error, color: Colors.red),
+                ),
+              )),
               Positioned(
                 top: 8.h,
                 right: 8.w,
@@ -55,17 +73,16 @@ class ProductItemWidget extends StatelessWidget {
               children: [
                 CustomTxt(
                   maxLines: 2,
-                  text:
-                      "Nike Air Jordon Nike shoes flexible for woman and men ",
+                  text: product.title ?? "",
                   fontSize: 12.sp,
                 ),
                 SizedBox(height: 1.h),
                 Row(
                   children: [
-                    CustomTxt(text: "EGP 400"),
+                    CustomTxt(text: product.price.toString()),
                     SizedBox(width: 8.w),
                     CustomTxt(
-                      text: "EGP ${400 * 1.23}",
+                      text: "EGP ${(product.price! * 1.25).toStringAsFixed(2)}",
                       textStyle: TextStyle(
                         decoration: TextDecoration.lineThrough,
                         fontSize: 12,
@@ -78,7 +95,8 @@ class ProductItemWidget extends StatelessWidget {
                 SizedBox(height: 1.h),
                 Row(
                   children: [
-                    CustomTxt(text: "Review (4.8)", fontSize: 12.sp),
+                    CustomTxt(text: "Review (${product.rating!.rate})",
+                        fontSize: 12.sp),
                     Icon(Icons.star, color: Constants.yellowColor, size: 25.sp),
                     const Spacer(flex: 1),
                     InkWell(
