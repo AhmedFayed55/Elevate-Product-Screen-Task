@@ -14,9 +14,7 @@ import '../../../core/constants.dart';
 
 class ProductScreen extends StatelessWidget {
   static const String routeName = "Product_screen";
-
   ProductScreen({super.key});
-
   ProductsVIewModel vIewModel = ProductsVIewModel(useCase:
   GetAllProductsUseCase(repository: ProductsRepositoryImpl(dataSource:
   ProductsDataSourceImpl(apiManager: ApiManager()))));

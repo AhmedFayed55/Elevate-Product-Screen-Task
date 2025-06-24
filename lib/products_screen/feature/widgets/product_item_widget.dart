@@ -8,7 +8,6 @@ import 'custom_txt.dart';
 
 class ProductItemWidget extends StatelessWidget {
   const ProductItemWidget({super.key, required this.product});
-
   final ProductResponseEntity product;
 
   @override
@@ -38,8 +37,7 @@ class ProductItemWidget extends StatelessWidget {
                   errorWidget:
                       (context, url, error) =>
                           const Icon(Icons.error, color: Colors.red),
-                ),
-              )),
+                )),
               Positioned(
                 top: 8.h,
                 right: 8.w,
