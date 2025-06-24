@@ -4,9 +4,11 @@ import 'package:elevate_task/core/errors/failures.dart';
 import 'package:elevate_task/core/networking/api_manager.dart';
 import 'package:elevate_task/products_screen/data/model/product_response_dm.dart';
 import 'package:elevate_task/products_screen/domain/repos/products_data_source.dart';
+import 'package:injectable/injectable.dart';
 
 import '../../../core/constants.dart';
 
+@Injectable(as: ProductsDataSource)
 class ProductsDataSourceImpl implements ProductsDataSource {
   ApiManager apiManager;
 

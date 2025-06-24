@@ -1,7 +1,3 @@
-import 'package:elevate_task/core/networking/api_manager.dart';
-import 'package:elevate_task/products_screen/data/data_source/products_data_source_impl.dart';
-import 'package:elevate_task/products_screen/data/repositories/products_repository_impl.dart';
-import 'package:elevate_task/products_screen/domain/use_case/get_all_products_use_case.dart';
 import 'package:elevate_task/products_screen/feature/manager/products_states.dart';
 import 'package:elevate_task/products_screen/feature/manager/products_view_model.dart';
 import 'package:elevate_task/products_screen/feature/widgets/product_item_widget.dart';
@@ -10,14 +6,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../core/constants.dart';
+import '../../../core/di/di.dart';
 
 
 class ProductScreen extends StatelessWidget {
   static const String routeName = "Product_screen";
   ProductScreen({super.key});
-  ProductsVIewModel vIewModel = ProductsVIewModel(useCase:
-  GetAllProductsUseCase(repository: ProductsRepositoryImpl(dataSource:
-  ProductsDataSourceImpl(apiManager: ApiManager()))));
+
+  ProductsVIewModel vIewModel = getIt<ProductsVIewModel>();
 
   @override
   Widget build(BuildContext context) {

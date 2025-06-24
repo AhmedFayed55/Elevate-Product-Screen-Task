@@ -1,6 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:elevate_task/core/constants.dart';
+import 'package:injectable/injectable.dart';
 
+@LazySingleton()
 class ApiManager {
   final dio = Dio();
 
